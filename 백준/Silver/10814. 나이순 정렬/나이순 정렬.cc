@@ -9,7 +9,7 @@ bool compare(pair<int, string> p1, pair<int, string> p2) {
 }
 
 int main(void) {
-	int n, i, j;
+	int n;
 	vector<pair<int, string>> v;
 	cin >> n;
 
