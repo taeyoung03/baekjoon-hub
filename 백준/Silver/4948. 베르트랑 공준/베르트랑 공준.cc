@@ -2,6 +2,21 @@
 #include <vector>
 using namespace std;
 
+void Eratos(vector<bool> &eratos)
+{
+	eratos[0] = eratos[1] = false;
+	for (int i = 2; i * i < eratos.size(); i++)
+	{
+		if (eratos[i])
+		{
+			for (int j = i * i; j < eratos.size(); j += i)
+			{
+				eratos[j] = false;
+			}
+		}
+	}
+}
+
 int main(void)
 {
 	ios::sync_with_stdio(false);
@@ -15,18 +30,9 @@ int main(void)
 		{
 			return 0;
 		}
+
 		vector<bool> eratos(2 * num + 1, true);
-		eratos[0] = eratos[1] = false;
-		for (int i = 2; i * i < eratos.size(); i++)
-		{
-			if (eratos[i])
-			{
-				for (int j = i * i; j < eratos.size(); j += i)
-				{
-					eratos[j] = false;
-				}
-			}
-		}
+		Eratos(eratos);
 
 		int cnt = 0;
 		for (int i = num + 1; i < eratos.size(); i++)
