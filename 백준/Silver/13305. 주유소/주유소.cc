@@ -1,5 +1,5 @@
-#include <iostream>
 #include <climits>
+#include <iostream>
 #include <vector>
 using namespace std;
 
@@ -10,28 +10,21 @@ int main(void) {
     int n;
     cin >> n;
 
-    vector<long long> load(n - 1), gas(n);
-    long long gas_min = LLONG_MAX;
+    vector<int> load(n - 1), gas(n);
     for (int i = 0; i < load.size(); i++) {
         cin >> load[i];
     }
     for (int i = 0; i < gas.size(); i++) {
         cin >> gas[i];
-        if (gas[i] < gas_min && i != gas.size() - 1) {
-            gas_min = gas[i];
-        }
     }
 
-    int sum = 0;
+    int gas_min = INT_MAX;
+    long long sum = 0;
     for (int i = 0; i < load.size(); i++) {
-        if (gas[i] == gas_min) {
-            for (int j = i; j < load.size(); j++) {
-                sum += gas[i] * load[j];
-            }
-            break;
-        } else {
-            sum += gas[i] * load[i];
+        if (gas[i] < gas_min) {
+            gas_min = gas[i];
         }
+        sum += gas_min * load[i];
     }
 
     cout << sum;
