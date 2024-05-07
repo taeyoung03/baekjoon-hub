@@ -10,7 +10,7 @@ int main(void) {
     int n;
     cin >> n;
 
-    vector<int> load(n - 1), gas(n);
+    vector<long long> load(n - 1), gas(n);
     for (int i = 0; i < load.size(); i++) {
         cin >> load[i];
     }
@@ -18,7 +18,7 @@ int main(void) {
         cin >> gas[i];
     }
 
-    int gas_min = INT_MAX;
+    long long gas_min = INT_MAX;
     long long sum = 0;
     for (int i = 0; i < load.size(); i++) {
         if (gas[i] < gas_min) {
