@@ -1,9 +1,10 @@
 #include <iostream>
 #define BLUE true
 #define WHITE false
+#define MAX_SIZE 128
 using namespace std;
 
-bool square[128][128];
+bool square[MAX_SIZE][MAX_SIZE];
 int cnt_white = 0, cnt_blue = 0;
 
 void SetArray(int n) {
@@ -14,32 +15,26 @@ void SetArray(int n) {
 	}
 }
 
-bool IsDone(int row, int col, int size) {
+void DivideAndConquer(int size, int row, int col) {
 	bool color = square[row][col];
+
 	for (int i = row; i < row + size; i++) {
 		for (int j = col; j < col + size; j++) {
 			if (square[i][j] != color) {
-				return false;
+				DivideAndConquer(size / 2, row, col);
+				DivideAndConquer(size / 2, row, col + size / 2);
+				DivideAndConquer(size / 2, row + size / 2, col);
+				DivideAndConquer(size / 2, row + size / 2, col + size / 2);
+				return;
 			}
 		}
 	}
-	return true;
-}
 
-void DivideAndConquer(int row, int col, int size) {
-	if (IsDone(row, col, size)) {
-		if (square[row][col] == BLUE) {
-			cnt_blue++;
-		}
-		else {
-			cnt_white++;
-		}
+	if (color == BLUE) {
+		cnt_blue++;
 	}
 	else {
-		DivideAndConquer(row, col, size / 2);
-		DivideAndConquer(row + size / 2, col, size / 2);
-		DivideAndConquer(row, col + size / 2, size / 2);
-		DivideAndConquer(row + size / 2, col + size / 2, size / 2);
+		cnt_white++;
 	}
 }
 
@@ -50,7 +45,7 @@ int main(void) {
 	int n;
 	cin >> n;
 	SetArray(n);
-	DivideAndConquer(0, 0, n);
+	DivideAndConquer(n, 0, 0);
 	cout << cnt_white << '\n' << cnt_blue;
 	return 0;
 }
