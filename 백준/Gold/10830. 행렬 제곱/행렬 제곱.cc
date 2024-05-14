@@ -10,6 +10,7 @@ void SetMatrix(int size) {
         for (int j = 0; j < size; j++) {
             cin >> matrix[i][j];
         }
+        ans[i][i] = 1;
     }
 }
 
@@ -31,21 +32,16 @@ void Multiply(int operand1[MAX_SIZE][MAX_SIZE], int operand2[MAX_SIZE][MAX_SIZE]
             }
         }
     }
-    CopyMatrix(tmp, ans, size);
+    CopyMatrix(tmp, operand2, size);
 }
 
 void Power(long long expo, int size) {
-    if (expo == 1) {
-        CopyMatrix(matrix, ans, size);
-        return;
-    }
-
-    Power(expo / 2, size);
-    if (expo % 2 == 0) {
-        Multiply(ans, ans, size);
-    } else {
-        Multiply(ans, ans, size);
-        Multiply(ans, matrix, size);
+    while (expo > 0) {
+        if (expo % 2 == 1) {
+            Multiply(matrix, ans, size);
+        }
+        Multiply(matrix, matrix, size);
+        expo /= 2;
     }
 }
 
