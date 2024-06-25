@@ -6,10 +6,7 @@ using namespace std;
 
 long long solution(int a, int b) {
     long long answer = 0;
-    if(a > b){
-        swap(a, b);
-    }
-    for(int i = a; i <= b; i++){
+    for(int i = min(a, b); i <= max(a, b); i++){
         answer += i;
     }
     return answer;
