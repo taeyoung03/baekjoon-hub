@@ -1,18 +1,12 @@
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 vector<int> solution(vector<int> arr) 
 {
-    vector<int> answer;
-    
-    for(int i = 0; i < arr.size(); i++){
-        answer.push_back(arr[i]);
-        if(i > 0 && answer.back() == answer[answer.size() - 2]){
-            answer.pop_back();
-        }
-    }
-
+	arr.erase(unique(arr.begin(), arr.end()), arr.end());
+    vector<int> answer = arr;
     return answer;
 }
