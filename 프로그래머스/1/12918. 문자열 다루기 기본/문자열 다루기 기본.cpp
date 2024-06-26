@@ -8,7 +8,7 @@ bool solution(string s) {
         return false;
     }
     for(int i = 0; i < s.length(); i++){
-        if(('a' <= s[i] && s[i] <= 'z' ) || ('A' <= s[i] && s[i] <= 'Z')){
+        if(!isdigit(s[i])){
             return false;
         }
     }
