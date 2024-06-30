@@ -8,7 +8,7 @@ string solution(int a, int b) {
     vector<string> day = {"FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"};
     
     int sum = -1;
-    for(int i = 0; i < a - 1; i++){
+    for(int i = 0; i < a - 1; i++) {
         sum += month[i];
     }
     sum += b;
