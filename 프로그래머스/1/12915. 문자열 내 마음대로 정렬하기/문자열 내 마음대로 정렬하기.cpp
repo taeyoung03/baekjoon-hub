@@ -6,11 +6,11 @@ using namespace std;
 
 int idx;
 
-bool compare(string a, string b){
-    if(a[idx] == b[idx]){
+bool compare(string a, string b) {
+    if (a[idx] == b[idx]) {
         return a < b;
     }
-    else{
+    else {
         return a[idx] < b[idx];
     }
 }
