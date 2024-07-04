@@ -4,12 +4,9 @@ using namespace std;
 int solution(int n)
 {
     int answer = 0;
-
-    int devisor = 10;
     while (n) {
-        answer += n % devisor;
-        n /= devisor;
+        answer += n % 10;
+        n /= 10;
     }
-    
     return answer;
 }
