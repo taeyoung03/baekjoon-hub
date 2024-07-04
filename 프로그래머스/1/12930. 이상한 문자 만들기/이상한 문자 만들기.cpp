@@ -10,18 +10,15 @@ string solution(string s) {
     for (int i = 0; i < s.length(); i++) {
         if (s[i] == ' ') {
             is_even = true;
+            continue;
         }
         else if (is_even) {
             is_even = false;
-            if ('a' <= s[i] && s[i] <= 'z') {
-                s[i] -= ('a' - 'A');
-            }
+            s[i] = toupper(s[i]);
         }
         else if (!is_even) {
             is_even = true;
-            if ('A' <= s[i] && s[i] <= 'Z') {
-                s[i] += ('a' - 'A');
-            }
+            s[i] = tolower(s[i]);
         }
     }
     answer = s;
