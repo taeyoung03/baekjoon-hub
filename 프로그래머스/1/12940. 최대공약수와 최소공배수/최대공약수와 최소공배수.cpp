@@ -1,27 +1,20 @@
 #include <string>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
+int GCD(int a, int b) {
+    if (a % b == 0) {
+        return b;
+    }
+    else {
+        return GCD(b, a % b);
+    }
+}
+
 vector<int> solution(int n, int m) {
     vector<int> answer;
-    
-    int gcd;
-    for (int i = 1; i <= min(n, m); i++) {
-        if (n % i == 0 && m % i == 0) {
-            gcd = i;
-        }
-    }
-    
-    int lcm;
-    for (int i = min(n, m); ; i++) {
-        if (i % n == 0 && i % m == 0) {
-            lcm = i;
-            break;
-        }
-    }
-    
-    answer = {gcd, lcm};
+    answer.push_back(GCD(n, m));
+    answer.push_back(n * m / answer[0]);
     return answer;
 }
