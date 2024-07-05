@@ -4,8 +4,7 @@
 using namespace std;
 
 string solution(string phone_number) {
-    for (int i = 0; i < phone_number.length() - 4; i++) {
-        phone_number[i] = '*';
-    }
+    phone_number.replace(phone_number.begin(), phone_number.end() - 4,
+                        phone_number.length() - 4, '*');
     return phone_number;
 }
