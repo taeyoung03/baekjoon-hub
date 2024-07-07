@@ -5,12 +5,10 @@
 using namespace std;
 
 long long solution(long long n) {
-    long long i;
-    for (i = 1; i * i < n; i++);
-    if (pow(i, 2) == n) {
-        return pow(i + 1, 2);
+    long long answer = 0;
+    for (answer; pow(answer, 2) < n; answer++);
+    if (pow(answer, 2) == n) {
+        return pow(answer + 1, 2);
     }
-    else {
-        return -1;
-    }
+    return -1;
 }
