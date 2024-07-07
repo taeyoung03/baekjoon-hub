@@ -4,24 +4,19 @@
 using namespace std;
 
 string solution(string s) {
-    string answer = "";
     bool is_even = true;
-    
     for (int i = 0; i < s.length(); i++) {
         if (s[i] == ' ') {
             is_even = true;
             continue;
         }
-        else if (is_even) {
-            is_even = false;
+        if (is_even) {
             s[i] = toupper(s[i]);
         }
-        else if (!is_even) {
-            is_even = true;
+        else {
             s[i] = tolower(s[i]);
         }
+        is_even = !is_even;
     }
-    answer = s;
-    
-    return answer;
+    return s;
 }
