@@ -6,8 +6,8 @@ using namespace std;
 
 long long solution(long long n) {
     long long answer = 0;
-    string s = to_string(n);
-    sort(s.begin(), s.end(), greater<char>());
-    answer = stoll(s);
+    string number = to_string(n);
+    sort(number.begin(), number.end(), greater<char>());
+    answer = stoll(number);
     return answer;
 }
