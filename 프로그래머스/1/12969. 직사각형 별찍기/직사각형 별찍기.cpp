@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -7,11 +8,9 @@ int main(void) {
     int b;
     cin >> a >> b;
     
+    string stars(a, '*');
     for (int i = 0; i < b; i++) {
-        for (int j = 0; j < a; j++) {
-            cout << "*";
-        }
-        cout << endl;
+        cout << stars << endl;
     }
     return 0;
 }
