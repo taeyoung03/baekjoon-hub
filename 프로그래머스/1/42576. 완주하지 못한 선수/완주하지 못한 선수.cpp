@@ -7,18 +7,16 @@ using namespace std;
 string solution(vector<string> participant, vector<string> completion) {
     map<string, int> completion_map;
     
-    for (int i = 0; i < completion.size(); i++) {
-        string name = completion[i];
-        if (completion_map.find(name) != completion_map.end()) {
-            completion_map[name]++;
+    for (string name : completion) {
+        if (completion_map.find(name) == completion_map.end()) {
+            completion_map.insert({name, 1});
         }
         else {
-            completion_map.insert({name, 1});
+            completion_map[name]++;
         }
     }
     
-    for (int i = 0; i < participant.size(); i++) {
-        string name = participant[i];
+    for (string name : participant) {
         if (completion_map.find(name) == completion_map.end()) {
             return name;
         }
