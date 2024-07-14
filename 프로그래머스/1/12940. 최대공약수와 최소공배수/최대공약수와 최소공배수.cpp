@@ -4,8 +4,8 @@
 using namespace std;
 
 int GCD(int a, int b) {
-    if (a % b == 0) {
-        return b;
+    if (b == 0) {
+        return a;
     }
     return GCD(b, a % b);
 }
@@ -13,6 +13,6 @@ int GCD(int a, int b) {
 vector<int> solution(int n, int m) {
     vector<int> answer;
     answer.push_back(GCD(n, m));
-    answer.push_back(n * m / answer[0]);
+    answer.push_back(n * m / answer.front());
     return answer;
 }
